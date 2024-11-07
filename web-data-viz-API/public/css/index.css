@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend Deca', sans-serif;
+    background-color:  #2D2D2D; 
+    min-height: 100px;
+    background-size: cover;
+}
+
+header {
+    background-color:  #1C1C1C;
+    box-shadow: 0px 3px 10px;
+    
+}
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+
+.list-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.list-navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;           /* Retira os bullets points */
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.navbar .list-navbar a:hover {
+    color: #D3D3D3;
+}
+
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+ 
+
+.login-button {
+    background-color: transparent;
+   border: solid 1px;
+    border-radius: 10px;
+    border-color: #f3ffcf;
+    padding: 10px 15px;
+    margin-right: 20px;
+  
+}
+
+.login-button a {
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-size: 18px;
+    font-weight: 300;
+    color: #f3ffcf;
+}
+
+.cadastro-button {
+    background-color: transparent;
+    border: solid 1px;
+    border-color: #f3ffcf;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: 900;
+}
+.cadastro-button a {
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-size: 18px;
+    font-weight: 700;
+    color: #f3ffcf;
+}
+
+
+
+/* HOME */
+
+#home {
+    background-image: url(../assets/imgs/home.jpg);
+    background-size: cover;
+    height: 86.98vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home {
+    margin-left: 45px;
+    
+}
+
+
+.home button {
+
+    font-weight: 500;
+    font-size: 20px;
+    padding: 20px 40px;
+    background-color: transparent;
+    border: solid 1px;
+    border-color: #f3ffcf;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.home button a {
+    text-decoration: none;
+    color: #f3ffcf;
+}
+
+.home p {
+    font-size: 26px;
+    margin-top: 10px;
+    color:white;
+}
+.home h1 {
+    font-size: 46px;
+    font-weight: 600;
+    color: white  ;
+}
+
+#sobre {
+    display: flex;      
+    background-color: #747474;
+    text-align: center;
+    flex-direction: column;
+    font-size: 20px;
+    /* align-items: center; */
+  
+}
+.sobre{
+    display: flex;
+}
+.sobre .container {
+    display:  flex;
+    margin: auto;
+    align-items: center;
+    max-width: 1400px;
+}
+
+#sobre p{
+    font-size: 36px;
+    font-weight: 500;
+    color:#4C4C4C;
+    padding: 27px;
+    
+}
+
+
+
+.sobre .quemSomos {
+    text-align: center;
+    display: flex;
+    width: 500px;
+    margin-left: 50px;
+}
+
+.sobre .img-quemSomos img {
+    width: 25rem;
+    border-radius: 15px;
+    margin-left: 200px;
+}

@@ -1,0 +1,232 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="./css/cadastro.css">
+      <title>Document</title>
+      <script src="./js/sessao.js"></script>
+      
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+
+            <div class="list-navbar">
+                <ul>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Veículos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li>
+                </ul>
+            </div>
+
+            <div class="buttons">
+                <button class="cadastro-button"><a href="./login.html">Login</a></button>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="main-cadastro">
+        <div class="left-cadastro">
+            <h1>Cadastre-se e faça <br>parte dessa comunidade. </h1>
+            <img src="assets/imgs/carroLogin.svg" alt="">
+        </div>
+
+        <div class="right-cadastro">
+            <div class="card-cadastro">
+                <h1>CADASTRO</h1>
+            <div class="textfield-container">
+                <div class="textfield">
+                    <label for="nome">Nome completo</label>
+                    <input id="ipt_nome" type="text" name="nome" placeholder="Digite seu nome completo">
+                    <div id="div_validarNome"></div>
+                </div>
+
+                <div class="textfield">
+                    <label for="e-mail">E-mail</label>
+                    <input id="ipt_email" type="email" name="E-mail" placeholder="Digite seu e-mail">
+                    <div id="div_validarEmail"></div>
+                </div>
+
+            </div>
+            <div class="textfield-container">
+                <div class="textfield">
+                    <label for="Data de nascimento">Data de nascimento</label>
+                    <input id="ipt_dtNasc" type="date" name="data de nascimento" placeholder="DD/MM/AAAA">
+                    <div id="div_validarDtNasc"></div>
+                </div>
+
+                <div class="textfield">
+                    <label for="Celular">Celular</label>
+                    <input id="ipt_celular" type="number" name="Celular" placeholder="XX XXXX XXXX">
+                    <div id="div_validarCelular"></div>
+                </div>
+            </div>
+            <div class="textfield-container">
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input id="ipt_senha" type="password" name="senha" placeholder="Digite sua senha">
+                    <div id="div_validarSenha"></div>
+                </div>
+
+                <div class="textfield">
+                    <label for="senha">Confirme sua senha</label>
+                    <input id="ipt_confirmarSenha" type="password" name="confirmação de senha" placeholder="Digite sua senha novamente">
+                    <div id="div_validarConfirmarSenha"></div>
+                </div>
+            </div>
+                <button class="btn-cadastro" onclick="cadastrar()">Cadastre-se</button>
+            </div>
+            
+        </div>
+    </div>
+    <span style="color: rgb(179, 2, 2);"></span>
+    <span style="color: #4CAF50;"></span>
+</body>
+
+</html>
+
+<script>
+
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  // let listaEmpresasCadastradas = [];
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nome =  ipt_nome.value
+    var email =  ipt_email.value
+    var dtNasc =  ipt_dtNasc.value
+    var celular =  ipt_celular.value
+    var senha =  ipt_senha.value
+    var confirmarSenha =  ipt_confirmarSenha.value
+
+    // Verificando se há algum campo em branco
+    if(nome == '' || email == '' || dtNasc == '' || celular == '' || senha == '' || confirmarSenha == '' ){   
+
+if(nome.length > 0){div_validarNome.innerHTML = `<span style="color: #4CAF50;">Nome válido</span>`
+} else {div_validarNome.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um nome válido</span>`}
+
+if(email.includes("@")){div_validarEmail.innerHTML = `<span style="color: #4CAF50;">E-mail válido</span>`
+} else {div_validarEmail.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um e-mail válido</span>`}
+
+if(dtNasc != ''){div_validarDtNasc.innerHTML = `<span style="color: #4CAF50;">Data de nascimento válida</span>`
+} else {div_validarDtNasc.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira uma data de nascimento válida</span>`}
+
+if(celular.length >= 11){div_validarCelular.innerHTML = `<span style="color: #4CAF50;">Número válido</span>`
+} else {div_validarCelular.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um número de celular válido</span>`}
+
+//Variáveis para validar senha
+
+var temNumero = false
+var temLetram = false
+var temLetraM = false
+
+
+if (senha.length >= 8){
+
+for (var atual = 0; atual < senha.length; atual++) {
+
+ var atual2 = senha[atual]
+ 
+ if(atual2 >= 'A' && atual2 <= 'Z') {
+     temLetraM = true
+ 
+ } else if (atual2 >= 'a' && atual2 <= 'z') {
+     temLetram = true 
+
+ } else if (atual2 >= '0' && atual2 <= '9') { 
+     temNumero = true
+
+ }
+}
+
+if (temLetraM && temLetram && temNumero) {
+ div_validarSenha.innerHTML = `<span style="color: #4CAF50;">Senha válida</span>`
+
+}
+} else {
+ div_validarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senha inválida <br>Minímo 8 caracteres, sendo letra Maiúscula, minúscula e número</span>`
+}
+
+if(confirmarSenha.length >= 8) {
+if(confirmarSenha == senha) {
+
+ div_validarConfirmarSenha.innerHTML = `<span style="color: #4CAF50;">Confirmação de senha válida</span>`
+
+} else {
+
+ div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senhas diferentes</span>`; 
+}
+} else {
+
+div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senhas diferentes</span>`; 
+} 
+
+} else { 
+ window.location.href = "./login.html"   
+}
+
+
+
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nome,
+        emailServer: email,
+        senhaServer: senha,
+        dtNascServer: dtNasc,
+        celularServer: celular,
+        // idEmpresaVincularServer: idEmpresaVincular
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

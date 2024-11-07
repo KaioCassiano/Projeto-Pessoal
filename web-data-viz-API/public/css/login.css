@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend Deca', sans-serif;
+    background-color:  #2D2D2D; 
+    min-height: 100px;
+    background-size: cover;
+    overflow: hidden;
+}
+
+header {
+    background-color:  #1C1C1C;
+    box-shadow: 0px 3px 10px;
+    z-index: 1000000;
+   
+}
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+
+.list-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.list-navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;           /* Retira os bullets points */
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.navbar .list-navbar a:hover {
+    color: #D3D3D3;
+}
+
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+ 
+
+.login-button {
+    background-color: transparent;
+   border: solid 1px;
+    border-radius: 10px;
+    border-color: #0074D9;
+    padding: 10px 15px;
+    margin-right: 20px;
+  
+}
+
+.login-button a {
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-size: 18px;
+    font-weight: 300;
+    color: #0074D9;
+}
+
+.cadastro-button {
+    background-color: #0074D9;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: 900;
+}
+.cadastro-button a {
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+
+.main-login {
+    width: 100vw;
+    height: calc(100vh - 78.8px);
+    background-color: #2D2D2D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-login h1{
+    color: #0074D9;
+    
+}
+
+.left-login img {
+    width: 35vw;
+}
+
+.right-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #1C1C1C;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #0a0a0a;
+}
+
+.card-login h1 {
+    color: #0074D9;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textfield{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #3e4347;
+    color: aliceblue;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #0a0a0a;
+    outline: none;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
+.textfield label {
+    color: aliceblue;
+    margin-bottom: 10px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border-radius: 12px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #ffffff;
+    background: transparent;
+    border-color:#0074D9;
+    cursor: pointer;
+}
+
+.button-cadastre-se {
+    background: transparent;
+    border: none;
+    
+}
