@@ -136,21 +136,22 @@ header {
 
 #sobre {
     display: flex;      
+    min-height: 100vh;
     background-color: #747474;
     text-align: center;
     flex-direction: column;
     font-size: 20px;
-    /* align-items: center; */
-  
+    overflow: hidden;
 }
 .sobre{
     display: flex;
+    flex-wrap: wrap; /* Garante que o conteúdo se ajuste à tela menor */
 }
 .sobre .container {
     display:  flex;
     margin: auto;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1200px;
 }
 
 #sobre p{
@@ -168,6 +169,7 @@ header {
     display: flex;
     width: 500px;
     margin-left: 50px;
+
 }
 
 .sobre .img-quemSomos img {

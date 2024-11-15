@@ -132,6 +132,17 @@ header {
     width: 100%;
 }
 
+.card-cadastro .textfield-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+.textfield-container2 .textfield {
+    width: 80%; /* Ajusta a largura para centralizar */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
 .textfield{
     display: flex;
     width: 48%;
@@ -160,6 +171,7 @@ header {
     margin-bottom: 10px;
 }
 
+
 .btn-cadastro {
     width: 100%;
     padding: 16px 0px;
@@ -173,3 +185,20 @@ header {
     border-color:#0074D9;
     cursor: pointer;
 }
+
+input[type="file"]{
+    color: transparent;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 10px 65px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+

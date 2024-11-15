@@ -61,13 +61,13 @@
             <div class="textfield-container">
                 <div class="textfield">
                     <label for="Data de nascimento">Data de nascimento</label>
-                    <input id="ipt_dtNasc" type="date" name="data de nascimento" placeholder="DD/MM/AAAA">
+                    <input id="ipt_dtNasc" type="text" name="data de nascimento" placeholder="AAAA/MM/DD">
                     <div id="div_validarDtNasc"></div>
                 </div>
 
                 <div class="textfield">
                     <label for="Celular">Celular</label>
-                    <input id="ipt_celular" type="number" name="Celular" placeholder="XX XXXX XXXX">
+                    <input id="ipt_celular" type="number"  max="11" name="Celular" placeholder="XX XXXX XXXX">
                     <div id="div_validarCelular"></div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ if(email.includes("@")){div_validarEmail.innerHTML = `<span style="color: #4CAF5
 if(dtNasc != ''){div_validarDtNasc.innerHTML = `<span style="color: #4CAF50;">Data de nascimento válida</span>`
 } else {div_validarDtNasc.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira uma data de nascimento válida</span>`}
 
-if(celular.length >= 11){div_validarCelular.innerHTML = `<span style="color: #4CAF50;">Número válido</span>`
+if(celular.length >= 11 && celular.length <= 11 ){div_validarCelular.innerHTML = `<span style="color: #4CAF50;">Número válido</span>`
 } else {div_validarCelular.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um número de celular válido</span>`}
 
 //Variáveis para validar senha
@@ -194,7 +194,7 @@ div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senh
         emailServer: email,
         senhaServer: senha,
         dtNascServer: dtNasc,
-        celularServer: celular,
+        celularServer: celular
         // idEmpresaVincularServer: idEmpresaVincular
       }),
     })
@@ -202,7 +202,7 @@ div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senh
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          cardErro.style.display = "block"; 
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";

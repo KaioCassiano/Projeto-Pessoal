@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/veiculos.css">
+    <title>Document</title>
+    <script src="./js/sessao.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body onload="atualizarFeed()">
+    <header>
+        <nav class="navbar">
+
+            <div class="list-navbar">
+                <ul>
+                    <!-- <li> <a href=`./assets/imgs/img_carros/${fiat.jpg}`></a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Veículos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li>
+                </ul>
+            </div>
+
+            <div class="buttons">
+                <button class="cadastro-button"><a href="./login.html">Login</a></button>
+            </div>
+
+        </nav>
+    </header>
+<div id="div_box_feed">
+
+    <!-- <div class="feed-container">
+        <!-- Exemplo de Post 
+        <div class="post">
+            <h2 class="post-user">Dono:  <!-- vemDoBanco João Silva</h2>
+            <img src="./imagensVeiculo/<!-- vem do banco" alt="Imagem do carro" class="post-image">
+            <div class="post-info">
+                <h3>Modelo: <!-- vemDoBanco a</h3>
+                <h3>Marca: <!-- vemDoBanco b</h3>
+                <h3>Ano: <!-- vemDoBanco c</h3>
+            </div>
+            <p class="post-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et dolore fugit ipsum totam officiis. Praesentium temporibus vero a rem maxime recusandae, ad distinctio. Beatae ad reiciendis, explicabo est rerum voluptates! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum illo ipsum impedit vero quisquam provident odio, dolorem veritatis autem fuga corrupti dolores facilis repellendus itaque incidunt, sapiente praesentium! Ullam, ea? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum earum id impedit quas magni assumenda, illo nulla praesentium est architecto quaerat modi eum voluptatum aspernatur delectus inventore eos cumque consequatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nobis aliquid rerum possimus suscipit facilis explicabo at nulla, harum maxime repellendus dignissimos, dicta, architecto commodi iste aspernatur nesciunt atque illo.</label></p>
+        </div> -->
+
+    </div>
+
+</div>
+</body>
+
+<script>
+function atualizarFeed() {
+
+    var feedPublic = document.getElementById("div_box_feed");
+
+        fetch("/cadastroVeiculo/feed")
+        .then(function (resposta) {
+            console.log('to dentro do fetch', resposta)
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                   feedPublic.innerHTML = `Nenhum resultado encontrado!`
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var id = publicacao.id;
+                        var marca = publicacao.marca;
+                        var modelo = publicacao.modelo;
+                        var ano = publicacao.ano;
+                        var foto = publicacao.imagem_perfil;
+                        var descricao = publicacao.descricao;
+                        var nome = publicacao.nome;
+
+
+
+                        feedPublic.innerHTML = 
+                        `
+    <div class="feed-container">
+        <!-- Exemplo de Post -->
+        <div class="post">
+            <h2 class="post-user">Dono:${nome}</h2>
+            <img src="./imagensVeiculo/${foto}" alt="Imagem do carro" class="post-image">
+            <div class="post-info">
+                <h3>Modelo:${modelo}</h3>
+                <h3>Marca:${marca}</h3>
+                <h3>Ano: ${ano}</h3>
+            </div>
+            <p class="post-description">${descricao}</p>
+        </div>
+
+    </div>`
+                    }
+
+                
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+           
+        });
+    }
+
+
+</script>

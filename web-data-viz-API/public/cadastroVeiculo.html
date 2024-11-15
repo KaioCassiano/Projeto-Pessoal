@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/cadastroVeiculo.css">
     <title>Document</title>
     <script src="./js/sessao.js"></script>
 
@@ -21,6 +21,7 @@
 
             <div class="list-navbar">
                 <ul>
+                    <!-- <li> <a href=`./assets/imgs/img_carros/${fiat.jpg}`></a></li> -->
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Veículos</a></li>
@@ -43,45 +44,41 @@
                 <h1>CADASTRE SEU VEICULO</h1>
             <div class="textfield-container">
                 <div class="textfield">
-                    <label for="nome">Nome completo</label>
-                    <input id="ipt_nome" type="url" name="nome" placeholder="Digite seu nome completo">
-                    <div id="div_validarNome"></div>
+                    <label for="Modelo">Modelo</label>
+                    <input id="ipt_modelo" type="modelo" name="Modelo" placeholder="Digite o modelo de seu carro">
+                    <div id="div_ValidarModelo"></div>
+                </div>
+                <div class="textfield">
+                    <label for="Marca">Marca</label>
+                    <input id="ipt_marca" type="text" name="Marca" placeholder="Digite a marca de seu carro">
+                    <div id="div_ValidarMarca"></div>  
                 </div>
 
-                <div class="textfield">
-                    <label for="e-mail">E-mail</label>
-                    <input id="ipt_email" type="email" name="E-mail" placeholder="Digite seu e-mail">
-                    <div id="div_validarEmail"></div>
-                </div>
 
             </div>
             <div class="textfield-container">
                 <div class="textfield">
-                    <label for="Data de nascimento">Data de nascimento</label>
-                    <input id="ipt_dtNasc" type="date" name="data de nascimento" placeholder="DD/MM/AAAA">
-                    <div id="div_validarDtNasc"></div>
+                    <label for="Ano do carro">Ano</label>
+                    <input id="ipt_ano" type="number" name="Ano do carro" placeholder="Digite o ano de seu carro">
+                    <div id="div_ValidarAno"></div>
+                    <!-- FAZER VALIDAÇÃO DE 4 CARACTERES DE NUMERO -->
                 </div>
 
                 <div class="textfield">
-                    <label for="Celular">Celular</label>
-                    <input id="ipt_celular" type="number" name="Celular" placeholder="XX XXXX XXXX">
-                    <div id="div_validarCelular"></div>
+                    <label for="Foto">Insira uma imagem do carro</label>
+                    <input id="ipt_foto" type="file" name="foto" accept="image/*">
+                    <div id="div_ValidarFoto"></div>
                 </div>
             </div>
-            <div class="textfield-container">
+            <div class="textfield-container2">
+                
                 <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input id="ipt_senha" type="password" name="senha" placeholder="Digite sua senha">
-                    <div id="div_validarSenha"></div>
-                </div>
-
-                <div class="textfield">
-                    <label for="senha">Confirme sua senha</label>
-                    <input id="ipt_confirmarSenha" type="password" name="confirmação de senha" placeholder="Digite sua senha novamente">
-                    <div id="div_validarConfirmarSenha"></div>
+                    <label for="descricao">Descrição</label>
+                    <input id="ipt_descricao" type="text" name="descricao" placeholder="Descreva seu carro e conte sua história com ele">
+                    <div id="div_ValidarDescrição"></div>
                 </div>
             </div>
-                <button class="btn-cadastro" onclick="cadastro()">Cadastre-se</button>
+                <button class="btn-cadastro" onclick="cadastroVeiculo()">Cadastre seu carro</button>
             </div>
             
         </div>
@@ -94,80 +91,60 @@
 
 listaInputs = []
 
-function cadastro(){
-    
-      var nome =  ipt_nome.value
-      var email =  ipt_email.value
-      var dtNasc =  ipt_dtNasc.value
-      var celular =  ipt_celular.value
-      var senha =  ipt_senha.value
-      var confirmarSenha =  ipt_confirmarSenha.value
+function cadastroVeiculo(){
 
-      if(nome == '' || email == '' || dtNasc == '' || celular == '' || senha == '' || confirmarSenha == '' ){   
+   var marca = ipt_marca.value
+   var modelo = ipt_modelo.value
+   var ano = ipt_ano.value
+   var foto = ipt_foto.value
+   var descricao = ipt_descricao.value
+   var idUsuario = sessionStorage.ID_USUARIO
+   console.log('html',foto)
 
-       if(nome.length > 0){div_validarNome.innerHTML = `<span style="color: #4CAF50;">Nome válido</span>`
-       } else {div_validarNome.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um nome válido</span>`}
+    const formData = new FormData();
+    formData.append('marca', ipt_marca.value)
+    formData.append('modelo',ipt_modelo.value)
+    formData.append('ano', ipt_ano.value)
+    formData.append('foto', ipt_foto.files[0])
+    formData.append('descricao', ipt_descricao.value)
+    formData.append('idUsuario', sessionStorage.ID_USUARIO)
 
-       if(email.includes("@")){div_validarEmail.innerHTML = `<span style="color: #4CAF50;">E-mail válido</span>`
-       } else {div_validarEmail.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um e-mail válido</span>`}
+      if(marca == '' || modelo == '' || ano.length != 4 || foto == '' || descricao == '' ){   
 
-       if(dtNasc != ''){div_validarDtNasc.innerHTML = `<span style="color: #4CAF50;">Data de nascimento válida</span>`
-    } else {div_validarDtNasc.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira uma data de nascimento válida</span>`}
+       if(marca.length > 0){div_ValidarMarca.innerHTML = `<span style="color: #4CAF50;">Marca válida</span>`
+       } else {div_ValidarMarca.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um marca válido</span>`}
 
-    if(celular.length >= 11){div_validarCelular.innerHTML = `<span style="color: #4CAF50;">Número válido</span>`
-    } else {div_validarCelular.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um número de celular válido</span>`}
+       if(modelo != ''){div_ValidarModelo.innerHTML = `<span style="color: #4CAF50;">Modelo válido</span>`
+       } else {div_ValidarModelo.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um modelo     válido</span>`}
 
-    //Variáveis para validar senha
+       if(ano.length == 4 && !isNaN(ano)){div_ValidarAno.innerHTML = `<span style="color: #4CAF50;">Ano válido</span>`
+    } else {div_ValidarAno.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um ano válida</span>`}
 
-  var temNumero = false
-  var temLetram = false
-  var temLetraM = false
-  
+    if(foto != ''){div_ValidarFoto.innerHTML = `<span style="color: #4CAF50;">Imagem selecionada</span>`
+    } else {div_ValidarFoto.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira uma imagem</span>`}
 
-if (senha.length >= 8){
-    
-    for (var atual = 0; atual < senha.length; atual++) {
-       
-        var atual2 = senha[atual]
-        
-        if(atual2 >= 'A' && atual2 <= 'Z') {
-            temLetraM = true
-        
-        } else if (atual2 >= 'a' && atual2 <= 'z') {
-            temLetram = true 
+    if(descricao != ''){div_ValidarDescrição.innerHTML = `<span style="color: #4CAF50;">Descrição válida</span>`
+    } else {div_ValidarDescrição.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira uma descrição</span>`}
 
-        } else if (atual2 >= '0' && atual2 <= '9') { 
-            temNumero = true
-
-        }
-    }
-
-    if (temLetraM && temLetram && temNumero) {
-        div_validarSenha.innerHTML = `<span style="color: #4CAF50;">Senha válida</span>`
-  
-    }
-    } else {
-        div_validarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senha inválida <br>Minímo 8 caracteres, sendo letra Maiúscula, minúscula e número</span>`
-    }
-
-    if(confirmarSenha.length >= 8) {
-    if(confirmarSenha == senha) {
-    
-        div_validarConfirmarSenha.innerHTML = `<span style="color: #4CAF50;">Confirmação de senha válida</span>`
-
-    } else {
-    
-        div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senhas diferentes</span>`; 
-    }
-} else {
-    
-    div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senhas diferentes</span>`; 
-    } 
 
       } else { 
-        window.location.href = "./login.html"   
-      }
 
-}
+          
+          fetch("/cadastroVeiculo/cadastroVeiculo", {
+              method: "POST",
+              body: formData
+            })
+            .then(res => {
+                window.location = "index.html"
+            })
+            .catch(err => {
+                console.log('cheguei no fetch' + err);
+            })
+        }
+    }
+    console.log('cheguei no fetch')
+    
+    
+
 
 </script>
