@@ -12,11 +12,11 @@ router.post('/cadastroVeiculo', upload.single('foto'), (req, res) => {
   fotoController.salvar(req, res);
 });
 console.log('cheguei no routes')
-router.get('/:id', upload.single('foto'), (req, res) => {
-  fotoController.buscarUsuarioPeloId(req, res);
-});
+// router.get('/:id', upload.single('foto'), (req, res) => {
+//   fotoController.buscarUsuarioPeloId(req, res);
+// });
 
-router.get('/feed', (req, res) => {
+router.get('/feedVeiculos', (req, res) => {
   fotoController.enviarParaFeed(req, res);
   console.log("Dados do feed:")
 });

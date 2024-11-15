@@ -21,7 +21,6 @@
 
             <div class="list-navbar">
                 <ul>
-                    <!-- <li> <a href=`./assets/imgs/img_carros/${fiat.jpg}`></a></li> -->
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Veículos</a></li>
@@ -37,18 +36,6 @@
     </header>
 <div id="div_box_feed">
 
-    <!-- <div class="feed-container">
-        <!-- Exemplo de Post 
-        <div class="post">
-            <h2 class="post-user">Dono:  <!-- vemDoBanco João Silva</h2>
-            <img src="./imagensVeiculo/<!-- vem do banco" alt="Imagem do carro" class="post-image">
-            <div class="post-info">
-                <h3>Modelo: <!-- vemDoBanco a</h3>
-                <h3>Marca: <!-- vemDoBanco b</h3>
-                <h3>Ano: <!-- vemDoBanco c</h3>
-            </div>
-            <p class="post-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et dolore fugit ipsum totam officiis. Praesentium temporibus vero a rem maxime recusandae, ad distinctio. Beatae ad reiciendis, explicabo est rerum voluptates! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum illo ipsum impedit vero quisquam provident odio, dolorem veritatis autem fuga corrupti dolores facilis repellendus itaque incidunt, sapiente praesentium! Ullam, ea? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum earum id impedit quas magni assumenda, illo nulla praesentium est architecto quaerat modi eum voluptatum aspernatur delectus inventore eos cumque consequatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nobis aliquid rerum possimus suscipit facilis explicabo at nulla, harum maxime repellendus dignissimos, dicta, architecto commodi iste aspernatur nesciunt atque illo.</label></p>
-        </div> -->
 
     </div>
 
@@ -60,7 +47,7 @@ function atualizarFeed() {
 
     var feedPublic = document.getElementById("div_box_feed");
 
-        fetch("/cadastroVeiculo/feed")
+        fetch("/cadastroVeiculo/feedVeiculos")
         .then(function (resposta) {
             console.log('to dentro do fetch', resposta)
             if (resposta.ok) {
@@ -86,16 +73,16 @@ function atualizarFeed() {
 
 
 
-                        feedPublic.innerHTML = 
+                        feedPublic.innerHTML += 
                         `
     <div class="feed-container">
         <!-- Exemplo de Post -->
         <div class="post">
-            <h2 class="post-user">Dono:${nome}</h2>
+            <h2 class="post-user">Dono: ${nome}</h2>
             <img src="./imagensVeiculo/${foto}" alt="Imagem do carro" class="post-image">
             <div class="post-info">
-                <h3>Modelo:${modelo}</h3>
-                <h3>Marca:${marca}</h3>
+                <h3>Modelo:<span style="font-weight: 400;"> ${modelo}</span></h3>
+                <h3>Marca: ${marca}</h3>
                 <h3>Ano: ${ano}</h3>
             </div>
             <p class="post-description">${descricao}</p>

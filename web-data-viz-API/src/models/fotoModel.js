@@ -12,16 +12,16 @@ const instrucao = `insert into cadastroVeiculo (marca, modelo, ano, imagem_perfi
 
 function enviarParaFeed() {
   console.log('cheguei no model para enviar pro feed')
-const instrucao = `select id, marca, modelo, ano, imagem_perfil, descricao, fkUsuario, u.nome from cadastroVeiculo as v join usuario as u on v.fkUsuario = u.id;`;
+const instrucao = `select v.id, marca, modelo, ano, imagem_perfil, descricao, fkUsuario, u.nome from cadastroVeiculo as v join usuario as u on v.fkUsuario = u.id;`;
 
   return database.executar(instrucao);
 }
 
 
-function buscarUsuarioPeloId(id) {
-  const instrucao = `select * from usuario where id = ${id}`;
+// function buscarUsuarioPeloId(id) {
+//   const instrucao = `select * from usuario where id = ${id}`;
 
-  return database.executar(instrucao);
-}
+//   return database.executar(instrucao);
+// }
 
-module.exports = { salvar, buscarUsuarioPeloId, enviarParaFeed}
+module.exports = {salvar, enviarParaFeed}

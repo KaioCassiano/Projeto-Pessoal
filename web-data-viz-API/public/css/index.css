@@ -94,7 +94,7 @@ header {
 #home {
     background-image: url(../assets/imgs/home.jpg);
     background-size: cover;
-    height: 86.98vh;
+    height: 88.3vh;
     display: flex;
     align-items: center;
     justify-content: space-between;

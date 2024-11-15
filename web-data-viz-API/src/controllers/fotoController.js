@@ -17,19 +17,20 @@ function salvar(req, res) {
   });
 }
 
-function buscarUsuarioPeloId(req, res) {
-  console.log(req.params.id);
-  fotoModel.buscarUsuarioPeloId(req.params.id)
-  .then(resultado => {
-    res.json(resultado);
-  }).catch(err => {
-    res.status(500).send(err);
-  });
-}
+// function buscarUsuarioPeloId(req, res) {
+//   console.log(req.params.id);
+//   fotoModel.buscarUsuarioPeloId(req.params.id)
+//   .then(resultado => {
+//     res.json(resultado);
+//   }).catch(err => {
+//     res.status(500).send(err);
+//   });
+// }
 
 function enviarParaFeed(req, res) {
   console.log('estou no feedController')
-  fotoModel.enviarParaFeed().then(function (resultado) {
+  fotoModel.enviarParaFeed()
+  .then(function (resultado) {
       if (resultado.length > 0) {
           res.status(200).json(resultado);
           console.log('cheguei no controler')
@@ -42,4 +43,4 @@ function enviarParaFeed(req, res) {
       res.status(500).json(erro.sqlMessage);
   });
 }
-module.exports = { salvar, buscarUsuarioPeloId, enviarParaFeed } 
+module.exports = {salvar, enviarParaFeed } 
