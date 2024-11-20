@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="veiculos.html">Veículos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li> -->
                 </ul>
             </div>
 
@@ -106,14 +106,14 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nome =  ipt_nome.value
-    var email =  ipt_email.value
+    var emailVar =  ipt_email.value
     var dtNasc =  ipt_dtNasc.value
     var celular =  ipt_celular.value
     var senha =  ipt_senha.value
     var confirmarSenha =  ipt_confirmarSenha.value
 
     // Verificando se há algum campo em branco
-    if(nome == '' || email == '' || dtNasc == '' || celular == '' || senha == '' || confirmarSenha == '' ){   
+    if(nome == '' || emailVar == '' || dtNasc == '' || celular == '' || senha == '' || confirmarSenha == '' ){   
 
 if(nome.length > 0){div_validarNome.innerHTML = `<span style="color: #4CAF50;">Nome válido</span>`
 } else {div_validarNome.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um nome válido</span>`}
@@ -174,13 +174,33 @@ if(confirmarSenha == senha) {
 div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senhas diferentes</span>`; 
 } 
 
-} else { 
- window.location.href = "./login.html"   
 }
+// else { 
+//  window.location.href = "./login.html"   
+// }
 
 
 
+fetch("/usuarios/verificarEmail", {
+  method: "GET",
+})
+.then((res) => {
+  res.json().then((json) => {
+    console.log(json)
+    
+    var emailIgual = 0
+    for (var i = 0; i < json.length; i++) {
+      
+      if(json[i].email == emailVar){
+        console.log(json + 'TESTE')
+        emailIgual ++
+       div_validarEmail.innerHTML = `<span style="color: rgb(179, 2, 2)">E-mail já cadastrado </span>`
+       break
+      } // aqui se ele viu o 1 indice e o email não for igual ele executa o outro fetch até encontrar o email igual e ai sim ele para
+        
+    }
 
+    if(emailIgual == 0){
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -191,7 +211,7 @@ div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senh
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nome,
-        emailServer: email,
+        emailServer: emailVar,
         senhaServer: senha,
         dtNascServer: dtNasc,
         celularServer: celular
@@ -200,19 +220,16 @@ div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senh
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-
+  
         if (resposta.ok) {
-          cardErro.style.display = "block"; 
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+  
+          div_validarEmail.innerHTML = `<span style="color: #4CAF50">E-mail cadastrado com sucesso</span>`
 
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
+  
+          
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -221,8 +238,16 @@ div_validarConfirmarSenha.innerHTML = `<span style="color: rgb(179, 2, 2);">Senh
         console.log(`#ERRO: ${resposta}`);
         finalizarAguardar();
       });
+    } else {
+      alert(`E-mail ja cadastrado`)
+    }
 
-    return false;
+  })
+
+
+})
+
+
   }
 
 

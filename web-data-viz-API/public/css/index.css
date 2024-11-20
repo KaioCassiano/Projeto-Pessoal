@@ -83,8 +83,35 @@ header {
 .cadastro-button a {
     text-decoration: none;      /* Retira a linha sublinhada */
     font-size: 18px;
+    font-weight: 500;
+    color: #f3ffcf;
+}
+
+.logado-button {
+    background-color: transparent;
+    border: solid 1px;
+     border-radius: 10px;
+     border-color: #f3ffcf;
+     padding: 10px 15px;
+     margin-right: 20px;
+     text-decoration: none;      /* Retira a linha sublinhada */
+     font-size: 18px;
+     font-weight: 300;
+     color: #f3ffcf;
+}
+
+.sair-button {
+    background-color: transparent;
+    border: solid 1px;
+    border-color: #f3ffcf;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: 500;
+    text-decoration: none;      /* Retira a linha sublinhada */
+    font-size: 18px;
     font-weight: 700;
     color: #f3ffcf;
+    cursor: pointer;
 }
 
 
@@ -133,6 +160,8 @@ header {
     font-weight: 600;
     color: white  ;
 }
+/* SOBRE */
+
 
 #sobre {
     display: flex;      
@@ -143,6 +172,29 @@ header {
     font-size: 20px;
     overflow: hidden;
 }
+.main-sobre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-sobre {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-sobre{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .sobre{
     display: flex;
     flex-wrap: wrap; /* Garante que o conteúdo se ajuste à tela menor */
@@ -170,10 +222,52 @@ header {
     width: 500px;
     margin-left: 50px;
 
+} 
+
+
+ 
+/*conteudo dentro do right*/
+
+
+.feed-container {
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+ 
 }
 
-.sobre .img-quemSomos img {
-    width: 25rem;
+.post {
+    background-color: #242c28;
     border-radius: 15px;
-    margin-left: 200px;
+    padding: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.post-user {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+}
+
+.post-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    
+}
+
+.post-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.post-info h3 {
+    margin: 0;
+    font-weight: 600;
 }

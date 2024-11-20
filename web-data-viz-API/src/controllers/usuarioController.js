@@ -48,6 +48,12 @@ function autenticar(req, res) {
 
 }
 
+function verificarEmail(req, res) {
+    usuarioModel.verificarEmail().then((resultado) => {
+      res.status(200).json(resultado);
+    });
+  }
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
@@ -92,7 +98,10 @@ function cadastrar(req, res) {
     }
 }
 
+
+
 module.exports = {
     autenticar,
+    verificarEmail,
     cadastrar
 }

@@ -24,14 +24,11 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="./index.html#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Veículos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li> -->
                 </ul>
             </div>
 
-            <div class="buttons">
-                <button class="cadastro-button"><a href="./login.html">Login</a></button>
-            </div>
-
+           
         </nav>
     </header>
 <div id="div_box_feed">
@@ -43,6 +40,9 @@
 </body>
 
 <script>
+
+
+
 function atualizarFeed() {
 
     var feedPublic = document.getElementById("div_box_feed");
@@ -81,11 +81,11 @@ function atualizarFeed() {
             <h2 class="post-user">Dono: ${nome}</h2>
             <img src="./imagensVeiculo/${foto}" alt="Imagem do carro" class="post-image">
             <div class="post-info">
-                <h3>Modelo:<span style="font-weight: 400;"> ${modelo}</span></h3>
-                <h3>Marca: ${marca}</h3>
-                <h3>Ano: ${ano}</h3>
+                <h3>Modelo:<span style="font-weight: 500;"> ${modelo}</span></h3>
+                <h3>Marca:<span style="font-weight: 500;"> ${marca}</span></h3>
+                <h3>Ano:<span style="font-weight: 500;"> ${ano}</span></h3>
             </div>
-            <p class="post-description">${descricao}</p>
+            <p class="post-description"><span style="font-size: 18px;">${descricao}</span></p>
         </div>
 
     </div>`

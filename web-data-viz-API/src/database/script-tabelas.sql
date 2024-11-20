@@ -6,7 +6,7 @@
 comandos para mysql server
 */
 
-CREATE DATABASE AutoLegado ;
+CREATE DATABASE AutoLegado;
 
 USE AutoLegado;
 
@@ -15,9 +15,19 @@ CREATE TABLE usuario (
 	nome VARCHAR(50),
 	email VARCHAR(50),
 	senha VARCHAR(50),
-	cpf VARCHAR(14),
 	dtNasc DATE,
 	celular VARCHAR(11)
+);
+
+CREATE TABLE cadastroVeiculo (
+id int primary key auto_increment,
+marca varchar(45),
+modelo varchar(45),
+ano int,
+imagem_perfil varchar(255),
+descricao text,
+fkUsuario int,
+constraint fkUsuarioVeiculo foreign key (fkUsuario) references usuario(id)
 );
 
 

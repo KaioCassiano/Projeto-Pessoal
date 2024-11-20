@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Lexend Deca', sans-serif;
-    background-color:  #EDEDED; 
+    background-color:  #333; 
     min-height: 100px;
     background-size: cover;
    
@@ -88,6 +88,8 @@ header {
     color: #FFFFFF;
 }
 
+
+
 /* */
 
 .feed-container {
@@ -111,7 +113,7 @@ header {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #0074D9;
+    color: black;
 }
 
 .post-image {

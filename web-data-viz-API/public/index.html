@@ -1,73 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/index.css">
     <title>Document</title>
-    <script src="./js/sessao.js"></script>
-
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-   
-   </style>
+    <script src="./js/sessao.js" defer></script>
 </head>
 <body>
     <header>
         <nav class="navbar">
-
             <div class="list-navbar">
                 <ul>
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="veiculos.html">Veículos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a></li>
+                    <li class="nav-item cadastro-veiculo" style="display: none;">
+                        <a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a>
+                    </li>
+                    <li class="nav-item dashboard" style="display: none;">
+                        <a class="nav-link" href="./dashboard.html">Dashboard</a>
+                    </li>
                 </ul>
             </div>
-
-            <div class="buttons">
+            <div class="buttons" id="user-buttons">
+       
                 <button class="login-button"><a href="./login.html">Login</a></button>
-            
                 <button class="cadastro-button"><a href="./cadastro.html">Cadastre-se</a></button>
-            </div>
 
+
+                <button class="logado-button" style="display: none;">Logado</button>
+                <button class="sair-button" style="display: none;"><span style="font-weight: 500;">Sair</span></button>
+            </div>
         </nav>
     </header>
 
     <section id="home">
         <div class="home">
             <h1>Preservando o Legado Automotivo</h1>
-            <p style="font-weight: 200;">Documentando a história de carros clássicos e esportivos <Br>para entusiastas e colecionadores.</span></p>
+            <p style="font-weight: 200;">Documentando a história de carros clássicos e esportivos<br>para entusiastas e colecionadores.</p>
             <button><a href="veiculos.html">Explore as histórias</a></button>
         </div>
     </section>
 
-    <section id="sobre">
-        
-        <p> QUEM SOMOS </p>
-        <div class="sobre">
-            <div class="container">
+    <script>
+        window.onload = function() {
+            const loginButton = document.querySelector('.login-button');
+            const cadastroButton = document.querySelector('.cadastro-button');
+            const logadoButton = document.querySelector('.logado-button');
+            const sairButton = document.querySelector('.sair-button');
+            const cadastroVeiculoItem = document.querySelector('.cadastro-veiculo');
+            const dashboardItem = document.querySelector('.dashboard');
             
-                <div class="quemSomos">
-                    Bem-vindo à nossa plataforma, um espaço criado para verdadeiros apaixonados por carros clássicos e esportivos. Aqui, conectamos colecionadores e entusiastas que compartilham o mesmo amor pelo legado e história automotiva.
-                </div>
-                <div class="img-quemSomos">
-                    <img src="./assets/imgs/mustang.jpg" alt="">
-                </div>
-            </div>
-        </div>
+            // Verifica se o usuário está logado
+            const userId = sessionStorage.getItem('ID_USUARIO');
 
-        <p>Missão e Valores</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Mollitia ut iure rem praesentium animi ex consequatur id sit soluta? Eos natus obcaecati quas ea culpa quis, cumque fugit veritatis ipsum?
-    </section>
+            // Verifica se o usuário está logado
+            if (userId) {
+                // Esconde os botões de login e cadastro
+                loginButton.style.display = 'none';
+                cadastroButton.style.display = 'none';
+
+                // Exibe os botões de "Logado" e "Sair"
+                logadoButton.style.display = 'inline-block';
+                sairButton.style.display = 'inline-block';
+
+                // Configura o botão "Logado" para exibir uma mensagem
+                logadoButton.onclick = () => alert('Você já está logado!');
+
+                // Exibe o link "Cadastro de Veículos" se o usuário estiver logado
+                cadastroVeiculoItem.style.display = 'block';
+
+                // Exibe o link "Dashboard" apenas se o usuário for o ID 1
+                if (userId === '1') {
+                    dashboardItem.style.display = 'block';
+                }
+
+                // Configura o botão "Sair"
+                sairButton.onclick = function() {
+                    // Remove o ID do usuário do sessionStorage
+                    sessionStorage.clear()
+                    alert('Você saiu da sua conta.');
+                    // Redireciona para a página inicial
+                    window.location.href = './index.html';
+                };
+            }
+        };
+    </script>
 </body>
 </html>
-
-<script>
-
-    // quando aparecer pagina 
-</script>
