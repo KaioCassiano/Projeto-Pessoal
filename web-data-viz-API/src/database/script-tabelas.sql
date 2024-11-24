@@ -30,6 +30,8 @@ fkUsuario int,
 constraint fkUsuarioVeiculo foreign key (fkUsuario) references usuario(id)
 );
 
+ALTER TABLE cadastroVeiculo
+ADD COLUMN data_insercao TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
 select * from usuario;
 
