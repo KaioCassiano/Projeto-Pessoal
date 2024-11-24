@@ -18,6 +18,38 @@ function verificarEmail() {
     return database.executar(instrucaoSql);
   }
 
+  function kpi1() {
+    console.log('estou função kpi1')
+    var instrucaoSql = `
+        SELECT COUNT(*) AS quantidade_total_usuarios
+        FROM usuario;
+    `;
+    return database.executar(instrucaoSql);
+  }
+
+  function kpi2() {
+    console.log('estou função kpi2')
+    var instrucaoSql = `
+        SELECT COUNT(*) AS quantidade_total_veiculos
+        FROM cadastroVeiculo;
+    `;
+    return database.executar(instrucaoSql);
+  } 
+
+  function dashDATA() {
+    console.log('estou função dashDATA')
+    var instrucaoSql = `
+         SELECT DATE_FORMAT(DATE(data_insercao), '%d/%m/%Y') AS data, 
+       COUNT(*) AS quantidade_veiculos
+       FROM cadastroVeiculo
+       GROUP BY DATE_FORMAT(DATE(data_insercao), '%d/%m/%Y')
+       ORDER BY data DESC;
+
+    `;
+    return database.executar(instrucaoSql);
+  } 
+  
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha,  dtNasc, celular) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
@@ -34,5 +66,8 @@ function cadastrar(nome, email, senha,  dtNasc, celular) {
 module.exports = {
     autenticar,
     verificarEmail,
+    kpi1,
+    kpi2,
+    dashDATA,
     cadastrar
 };

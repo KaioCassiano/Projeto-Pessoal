@@ -3,9 +3,10 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> -->
       <link rel="stylesheet" href="./css/cadastro.css">
+      <link rel="icon" href="assets/icon/carroLogin.ico" type="Icon pag">
       <title>Document</title>
       <script src="./js/sessao.js"></script>
       
@@ -102,6 +103,12 @@
 
   function cadastrar() {
     // aguardar();
+    nomeValidacao = false
+    emailVarValidacao = false
+    dtNascValidacao = false
+    celularValidacao = false
+    senhaValidacao = false
+    confirmarSenhaValidacao = false
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -112,19 +119,24 @@
     var senha =  ipt_senha.value
     var confirmarSenha =  ipt_confirmarSenha.value
 
+
     // Verificando se há algum campo em branco
-    if(nome == '' || emailVar == '' || dtNasc == '' || celular == '' || senha == '' || confirmarSenha == '' ){   
+    if(nomeValidacao == false || emailVarValidacao == false || dtNascValidacao == false || celularValidacao == false || senhaValidacao == false || confirmarSenhaValidacao == false ){   
 
 if(nome.length > 0){div_validarNome.innerHTML = `<span style="color: #4CAF50;">Nome válido</span>`
+nomeValidacao = true
 } else {div_validarNome.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um nome válido</span>`}
 
-if(email.includes("@")){div_validarEmail.innerHTML = `<span style="color: #4CAF50;">E-mail válido</span>`
+if(emailVar.includes("@")){div_validarEmail.innerHTML = `<span style="color: #4CAF50;">E-mail válido</span>`
+emailVarValidacao = true
 } else {div_validarEmail.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um e-mail válido</span>`}
 
 if(dtNasc != ''){div_validarDtNasc.innerHTML = `<span style="color: #4CAF50;">Data de nascimento válida</span>`
+dtNascValidacao = true
 } else {div_validarDtNasc.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira uma data de nascimento válida</span>`}
 
 if(celular.length >= 11 && celular.length <= 11 ){div_validarCelular.innerHTML = `<span style="color: #4CAF50;">Número válido</span>`
+celularValidacao = true
 } else {div_validarCelular.innerHTML = `<span style="color: rgb(179, 2, 2);">Insira um número de celular válido</span>`}
 
 //Variáveis para validar senha

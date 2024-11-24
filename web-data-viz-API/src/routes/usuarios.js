@@ -16,4 +16,16 @@ router.get("/verificarEmail", function (req, res) {
     usuarioController.verificarEmail(req, res);
 });
 
+router.get("/kpi1", function (req, res) {
+    usuarioController.kpi1(req, res);
+});
+
+router.get("/kpi2", function (req, res) {
+    usuarioController.kpi2(req, res);
+});
+
+router.get("/dashDATA", function (req, res) {
+    usuarioController.dashDATA(req, res);
+});
+
 module.exports = router;

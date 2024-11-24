@@ -54,6 +54,25 @@ function verificarEmail(req, res) {
     });
   }
 
+  function kpi1 (req, res) {
+    usuarioModel.kpi1().then((resultado) => {
+      res.status(200).json(resultado);
+    });
+  }
+
+  function kpi2(req, res) {
+    usuarioModel.kpi2().then((resultado) => {
+      res.status(200).json(resultado);
+    });
+  }
+
+  function dashDATA(req, res) {
+    usuarioModel.dashDATA().then((resultado) => {
+      res.status(200).json(resultado);
+    });
+  }
+
+
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
@@ -77,6 +96,7 @@ function cadastrar(req, res) {
     //  else if (fkEmpresa == undefined) {
     //     res.status(400).send("Sua empresa a vincular está undefined!");
     // } 
+    
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -103,5 +123,8 @@ function cadastrar(req, res) {
 module.exports = {
     autenticar,
     verificarEmail,
+    kpi1,
+    kpi2,
+    dashDATA,
     cadastrar
 }
