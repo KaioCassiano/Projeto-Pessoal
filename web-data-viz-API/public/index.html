@@ -20,7 +20,7 @@
                     <li class="nav-item cadastro-veiculo" style="display: none;">
                         <a class="nav-link" href="./cadastroVeiculo.html">Cadastro de Veículos</a>
                     </li>
-                    <li class="nav-item dashboard" style="display: none;">
+                    <li class="nav-item dashboard">
                         <a class="nav-link" href="dashboard.html">Dashboard</a>
                     </li>
                 </ul>
@@ -76,7 +76,7 @@
             const logadoButton = document.querySelector('.logado-button');
             const sairButton = document.querySelector('.sair-button');
             const cadastroVeiculoItem = document.querySelector('.cadastro-veiculo');
-            const dashboardItem = document.querySelector('.dashboard');
+            
             
             // Verifica se o usuário está logado
             const userId = sessionStorage.getItem('ID_USUARIO');
@@ -98,10 +98,7 @@
                 cadastroVeiculoItem.style.display = 'block';
 
                 // Exibe o link "Dashboard" apenas se o usuário for o ID 1
-                if (userId === '1') {
-                    dashboardItem.style.display = 'block';
-                }
-
+              
                 // Configura o botão "Sair"
                 sairButton.onclick = function() {
                     // Remove o ID do usuário do sessionStorage

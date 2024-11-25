@@ -18,10 +18,4 @@ const instrucao = `select v.id, marca, modelo, ano, imagem_perfil, descricao, fk
 }
 
 
-// function buscarUsuarioPeloId(id) {
-//   const instrucao = `select * from usuario where id = ${id}`;
-
-//   return database.executar(instrucao);
-// }
-
 module.exports = {salvar, enviarParaFeed}
