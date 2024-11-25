@@ -12,9 +12,9 @@ USE AutoLegado;
 
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
+	nome VARCHAR(45),
+	email VARCHAR(45),
+	senha VARCHAR(45),
 	dtNasc DATE,
 	celular VARCHAR(11)
 );
@@ -32,7 +32,3 @@ constraint fkUsuarioVeiculo foreign key (fkUsuario) references usuario(id)
 
 ALTER TABLE cadastroVeiculo
 ADD COLUMN data_insercao TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
-
-select * from usuario;
-
-desc usuario;

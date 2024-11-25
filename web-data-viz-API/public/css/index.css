@@ -166,7 +166,8 @@ header {
 #sobre {
     display: flex;      
     min-height: 100vh;
-    background-color: #747474;
+    background: linear-gradient(to bottom,#ffffff, #797979); /* Gradiente de cima para baixo */
+    background-size: cover;
     text-align: center;
     flex-direction: column;
     font-size: 20px;
@@ -185,6 +186,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
 }
 
 .right-sobre{
@@ -193,81 +195,53 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.sobre{
-    display: flex;
-    flex-wrap: wrap; /* Garante que o conteúdo se ajuste à tela menor */
-}
-.sobre .container {
-    display:  flex;
-    margin: auto;
-    align-items: center;
-    max-width: 1200px;
-}
-
-#sobre p{
-    font-size: 36px;
-    font-weight: 500;
-    color:#4C4C4C;
-    padding: 27px;
-    
-}
-
-
-
-.sobre .quemSomos {
-    text-align: center;
-    display: flex;
-    width: 500px;
-    margin-left: 50px;
-
-} 
-
-
- 
-/*conteudo dentro do right*/
-
-
-.feed-container {
-    width: 80%;
-    max-width: 800px;
-    display: flex;
     flex-direction: column;
- 
 }
 
-.post {
-    background-color: #242c28;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-}
-
-.post-user {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: rgb(255, 255, 255);
-}
-
-.post-image {
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    object-fit: cover;
-    
-}
-
-.post-info {
+.container-sobre {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    width: 90%; 
+    height: 45%;
+    padding: 20px; 
+    border: 2px solid #1C1C1C; 
+    border-radius: 10px; 
+    background-color: transparent;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    text-align: center; 
 }
 
-.post-info h3 {
-    margin: 0;
-    font-weight: 600;
+h1 {
+    margin-bottom: 20px; 
+    font-size: 2rem; 
 }
+
+p {
+    font-size: 1.2rem; 
+    line-height: 1.5; 
+    text-align: center;
+    align-items: center;
+    max-width: 90%; 
+}
+
+.footer {
+    background-color: #1C1C1C; 
+    color: white; 
+    text-align: center; 
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 100%; 
+    bottom: 0; 
+    margin-top: auto;
+}
+
+footer p {
+    font-weight: 400;
+    font-size: 16px;
+
+}
+
